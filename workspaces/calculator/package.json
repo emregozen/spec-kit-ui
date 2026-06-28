@@ -1,0 +1,20 @@
+{
+  "name": "fancy-calculator",
+  "version": "1.0.0",
+  "description": "A fancy client-side calculator with scientific functions, history, and theme support",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "playwright test",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0",
+    "@playwright/test": "^1.48.0"
+  },
+  "dependencies": {
+    "mathjs": "^13.0.0"
+  }
+}

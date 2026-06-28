@@ -1,0 +1,11 @@
+{
+  "libraryId": "tester",
+  "name": "Tester",
+  "icon": "🔍",
+  "kind": "library",
+  "description": "Checks whether the implemented feature is testable and, if so, writes and runs real tests against it.",
+  "artifacts": ["test-report.md"],
+  "steps": [
+    { "command": "/speckit-test", "argsTemplate": "{{feedback}}" }
+  ]
+}

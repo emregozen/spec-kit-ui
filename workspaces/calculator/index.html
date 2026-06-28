@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fancy Calculator</title>
+  <link rel="stylesheet" href="/src/styles/main.css" />
+  <script>
+    (function () {
+      var saved = localStorage.getItem('calculator-theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+</head>
+<body>
+  <div class="calculator">
+    <!-- Display Area -->
+    <div class="display" id="display">
+      <div class="display-top">
+        <span class="deg-indicator">DEG</span>
+        <button class="btn btn-icon btn-theme-toggle" id="theme-toggle" aria-label="toggle theme">
+          <span class="theme-icon" id="theme-icon">☀️</span>
+        </button>
+      </div>
+      <div class="expression-line" id="expression-line" aria-live="polite" aria-label="expression"></div>
+      <div class="result-line" id="result-line" aria-live="polite" aria-label="result"></div>
+    </div>
+
+    <!-- Main Layout: Calculator + History -->
+    <div class="main-layout">
+      <!-- Button Grid -->
+      <div class="button-grid">
+        <!-- Row 1: Scientific functions -->
+        <button class="btn btn-scientific" data-token="sin(" data-key="s" aria-label="sine">sin</button>
+        <button class="btn btn-scientific" data-token="cos(" data-key="c" aria-label="cosine">cos</button>
+        <button class="btn btn-scientific" data-token="tan(" data-key="t" aria-label="tangent">tan</button>
+        <button class="btn btn-scientific" data-token="ln(" data-key="l" aria-label="natural log">ln</button>
+        <button class="btn btn-scientific" data-token="√(" data-key="q" aria-label="square root">√</button>
+        <button class="btn btn-operator" data-token="^" data-key="^" aria-label="exponent">^</button>
+
+        <!-- Row 2: Parens, Clear, Backspace -->
+        <button class="btn btn-parens" data-token="(" data-key="(" aria-label="open parenthesis">(</button>
+        <button class="btn btn-parens" data-token=")" data-key=")" aria-label="close parenthesis">)</button>
+        <button class="btn btn-action btn-history-toggle" id="history-toggle" aria-label="toggle history">
+          <span class="history-badge" id="history-badge" style="display:none">0</span>
+          H
+        </button>
+        <button class="btn btn-clear" data-action="clear" data-key="Escape" aria-label="all clear">AC</button>
+        <button class="btn btn-action" data-action="backspace" data-key="Backspace" aria-label="backspace">⌫</button>
+        <button class="btn btn-operator" data-token="÷" data-key="/" aria-label="divide">÷</button>
+
+        <!-- Row 3: Numbers 7 8 9, multiply -->
+        <button class="btn btn-number" data-token="7" data-key="7" aria-label="seven">7</button>
+        <button class="btn btn-number" data-token="8" data-key="8" aria-label="eight">8</button>
+        <button class="btn btn-number" data-token="9" data-key="9" aria-label="nine">9</button>
+        <button class="btn btn-operator" data-token="×" data-key="*" aria-label="multiply">×</button>
+
+        <!-- Placeholder for scientific col alignment -->
+        <button class="btn btn-number" data-token="4" data-key="4" aria-label="four">4</button>
+        <button class="btn btn-number" data-token="5" data-key="5" aria-label="five">5</button>
+        <button class="btn btn-number" data-token="6" data-key="6" aria-label="six">6</button>
+        <button class="btn btn-operator" data-token="-" data-key="-" aria-label="subtract">−</button>
+
+        <!-- Row 5: Numbers 1 2 3, add -->
+        <button class="btn btn-number" data-token="1" data-key="1" aria-label="one">1</button>
+        <button class="btn btn-number" data-token="2" data-key="2" aria-label="two">2</button>
+        <button class="btn btn-number" data-token="3" data-key="3" aria-label="three">3</button>
+        <button class="btn btn-operator" data-token="+" data-key="+" aria-label="add">+</button>
+
+        <!-- Row 6: Zero (wide), decimal, equals -->
+        <button class="btn btn-number btn-zero" data-token="0" data-key="0" aria-label="zero">0</button>
+        <button class="btn btn-number" data-token="." data-key="." aria-label="decimal point">.</button>
+        <button class="btn btn-equals" data-action="evaluate" data-key="Enter" aria-label="equals">=</button>
+      </div>
+
+      <!-- History Panel -->
+      <div class="history-panel" id="history-panel" aria-label="calculation history">
+        <div class="history-header">
+          <h2>History</h2>
+          <button class="btn btn-icon btn-history-clear" id="history-clear" aria-label="clear history">🗑</button>
+        </div>
+        <ul class="history-list" id="history-list" aria-label="history list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

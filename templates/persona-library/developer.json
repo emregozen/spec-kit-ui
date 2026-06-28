@@ -1,0 +1,12 @@
+{
+  "libraryId": "developer",
+  "name": "Developer",
+  "icon": "👨‍💻",
+  "kind": "library",
+  "description": "Implements the architect's plan with high-quality, performant, maintainable code, following best practices.",
+  "artifacts": ["tasks.md"],
+  "steps": [
+    { "command": "/speckit-tasks", "argsTemplate": "{{feedback}}" },
+    { "command": "/speckit-implement", "argsTemplate": "{{feedback}}" }
+  ]
+}

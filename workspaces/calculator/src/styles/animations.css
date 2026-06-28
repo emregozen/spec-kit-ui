@@ -1,0 +1,68 @@
+@keyframes btn-press {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.93); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shake {
+  0%   { transform: translateX(0); }
+  16%  { transform: translateX(-6px); }
+  33%  { transform: translateX(6px); }
+  50%  { transform: translateX(-6px); }
+  66%  { transform: translateX(6px); }
+  83%  { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes history-slide-in-mobile {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes history-slide-in-desktop {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes result-fade {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.btn:active {
+  animation: btn-press 80ms ease-in-out;
+}
+
+.btn--pressed {
+  animation: btn-press 80ms ease-in-out;
+}
+
+.display--shake {
+  animation: shake 400ms ease-in-out;
+}
+
+.result-line--visible {
+  animation: result-fade 150ms ease-out;
+}
+
+@media (max-width: 639px) {
+  .history-panel--open {
+    animation: history-slide-in-mobile 250ms ease-out;
+  }
+}
+
+@media (min-width: 640px) {
+  .history-panel--open {
+    animation: history-slide-in-desktop 250ms ease-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

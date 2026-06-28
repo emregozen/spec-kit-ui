@@ -1,0 +1,12 @@
+{
+  "libraryId": "ux-designer",
+  "name": "UX Designer",
+  "icon": "🎨",
+  "kind": "library",
+  "description": "Designs the UI/UX for the requested platform, prioritizing user experience and lovability above all else.",
+  "artifacts": ["spec.md", "design.md"],
+  "steps": [
+    { "command": "/speckit-specify", "argsTemplate": "{{request}}{{feedback}}" },
+    { "command": "/speckit-design", "argsTemplate": "{{feedback}}" }
+  ]
+}
