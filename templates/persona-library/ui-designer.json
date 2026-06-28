@@ -1,0 +1,18 @@
+{
+  "libraryId": "ui-designer",
+  "name": "UI Designer",
+  "icon": "🖼️",
+  "kind": "library",
+  "description": "Translates UX specifications into polished, production-ready UI components and pages. Focuses on visual implementation, component library design, and interactive states.",
+  "artifacts": ["design-system.md", "components.md", "preview-screenshots.md"],
+  "steps": [
+    { "command": "/speckit-implement", "argsTemplate": "{{request}} Build reusable UI components from the UX design. {{feedback}}" },
+    { "command": "/speckit-design", "argsTemplate": "Document component variants, states, and accessibility considerations. {{feedback}}" }
+  ],
+  "approvalRequired": true,
+  "outputs": {
+    "primaryArtifact": "components.md",
+    "visualArtifacts": ["preview-screenshots.md"],
+    "designSystemReference": "design-system.md"
+  }
+}

@@ -35,22 +35,22 @@ Think of it as **Spec Kit's role choreography layer**—mapping personas directl
 This **Persona Library is the orchestration layer for GitHub Spec Kit**. Instead of running Spec Kit commands in isolation, you define personas that chain multiple Spec Kit commands together:
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                   Spec Kit Workflow                          │
-├─────────────────────────────────────────────────────────────┤
-│                                                               │
-│  🎨 UX Designer ─────→ 🏛️ Architect ─────→ 👨‍💻 Developer     │
-│  /speckit-specify     /speckit-plan      /speckit-tasks      │
-│  /speckit-design                         /speckit-implement  │
-│                                                               │
-│                            ↓                                  │
-│                      🔍 Tester                               │
-│                      /speckit-test                           │
-│                                                               │
-├─────────────────────────────────────────────────────────────┤
-│                 ↑ Orchestrated by                             │
-│            Persona Library (this library)                    │
-└─────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────┐
+│                     Spec Kit Workflow                            │
+├──────────────────────────────────────────────────────────────────┤
+│                                                                   │
+│  🎨 UX Designer → 🖼️ UI Designer → 🏛️ Architect → 👨‍💻 Developer  │
+│  /speckit-specify  /speckit-implement /speckit-plan /speckit-tasks│
+│  /speckit-design   /speckit-design              /speckit-implement│
+│                                                                   │
+│                             ↓                                     │
+│                        🔍 Tester                                 │
+│                        /speckit-test                             │
+│                                                                   │
+├──────────────────────────────────────────────────────────────────┤
+│                   ↑ Orchestrated by                               │
+│              Persona Library (this library)                      │
+└──────────────────────────────────────────────────────────────────┘
 ```
 
 **The key insight:** Each persona is just a predefined sequence of Spec Kit commands. This library makes it easy to:
@@ -68,10 +68,10 @@ This **Persona Library is the orchestration layer for GitHub Spec Kit**. Instead
 | Spec Kit Command | Purpose | Persona |
 |---|---|---|
 | `/speckit-specify` | Create feature specifications | UX Designer |
-| `/speckit-design` | Design UI/UX interactions | UX Designer |
+| `/speckit-design` | Design UI/UX interactions | UX Designer, UI Designer |
+| `/speckit-implement` | Implement UI components / Execute code | UI Designer, Developer |
 | `/speckit-plan` | Plan technical architecture | Architect |
 | `/speckit-tasks` | Generate implementation tasks | Developer |
-| `/speckit-implement` | Execute implementation | Developer |
 | `/speckit-test` | Write and run tests | Tester |
 
 This **Persona Library** provides the role-based layer that maps personas to these powerful Spec Kit commands, creating a unified workflow where each persona knows exactly which Spec Kit command(s) to invoke and in what sequence.
@@ -107,6 +107,7 @@ ls -la *.json
 architect.json       # Maps to /speckit-plan
 developer.json       # Maps to /speckit-tasks, /speckit-implement
 tester.json          # Maps to /speckit-test
+ui-designer.json     # Maps to /speckit-implement, /speckit-design
 ux-designer.json     # Maps to /speckit-specify, /speckit-design
 ```
 
